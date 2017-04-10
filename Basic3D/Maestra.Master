@@ -4,27 +4,29 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Basic3D</title>
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
     <meta name="keywords" content="" />
-	<meta name="description" content="" />
+    <meta name="description" content="" />
     <!-- 
     Polygon Template
     http://www.templatemo.com/tm-400-polygon
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/templatemo_misc.css">
     <link href="css/templatemo_style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
-      
-    <script src="js/jquery-1.10.2.min.js"></script> 
-	<script src="js/jquery.lightbox.js"></script>
-	<script src="js/templatemo_custom.js"></script>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.lightbox.js"></script>
+    <script src="js/templatemo_custom.js"></script>
     <script>
         function showhide() {
             var div = document.getElementById("newpost");
@@ -35,99 +37,118 @@
                 div.style.display = "block";
             }
         }
-  	</script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        
+
         <div class="site-header">
-		<div class="main-navigation">			
-			<div class="container">
-				<div class="row templatemo_gallerygap">					
-                    <div class="col-md-3 col-sm-12">
-                    	<a href="#"><img src="images/templatemo_logo.jpg" alt="Polygon HTML5 Template"></a>
-                    </div>
-					<div class="col-md-9 main_menu">
-                        <asp:ContentPlaceHolder ID="Menu" runat="server"></asp:ContentPlaceHolder>
+            <div class="main-navigation">
+                <div class="responsive_menu">
+                    <asp:ContentPlaceHolder ID="ResponsiveMenu" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <div class="container">
+                    <div class="row templatemo_gallerygap">
+                        <div class="col-md-12 responsive-menu">
+                            <asp:ContentPlaceHolder ID="ActivarRM" runat="server"></asp:ContentPlaceHolder>
 					</div> <!-- /.col-md-12 -->
-				</div> <!-- /.row -->
-			</div> <!-- /.container -->
-		</div> <!-- /.main-navigation -->
-	</div> <!-- /.site-header -->
-    <div id="menu-container">
-    <!-- gallery start -->
-    <div class="content homepage" id="menu-1">
-    <div class="container">
-        <asp:ContentPlaceHolder ID="Menu1" runat="server"></asp:ContentPlaceHolder>
-    </div>
-    </div>
-      <!-- gallery end -->
-    <!-- team start -->
-    <div class="content team" id="menu-2">
-    <div class="container">
-        <asp:ContentPlaceHolder ID="Menu2" runat="server"></asp:ContentPlaceHolder>
-    </div>
-     </div>
-    <!--team end-->
-    <div class="clear"></div>
-    <!-- service start -->
-    <div class="content services" id="menu-3">
-    <div class="container">
-        <asp:ContentPlaceHolder ID="Menu3" runat="server"></asp:ContentPlaceHolder>
-    </div>
-    </div>
-    <!-- service end -->
-    <!-- contact start -->
-    <div class="content contact" id="menu-5">
-    <div class="container">
-        <asp:ContentPlaceHolder ID="Menu4" runat="server"></asp:ContentPlaceHolder>    	
-    </div>
-    </div>
-    </div>
-    <!-- contact end -->
-	<!-- footer start -->
-    <div class="templatemo_footer">
-        <div class="row">
-        	<div class="col-md-9 col-sm-12">
-            	<span>  Copyright &copy; 2017 Universidad de San Carlos</span>
+                        <div class="col-md-3 col-sm-12">
+                            <a href="index.aspx">
+                                <img src="images/templatemo_logo.jpg" alt="Polygon HTML5 Template"></a>
+                        </div>
+                        <div class="col-md-9 main_menu">
+                            <asp:ContentPlaceHolder ID="Menu" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                        <!-- /.col-md-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
             </div>
-            <div class="col-md-3 col-sm-12 templatemo_rfooter">
-            	  <a href="#">
-                 	<div class="hex_footer">
-					<span class="fa fa-facebook"></span>
-					</div>
-                  </a>
-                  <a href="#">
-                    <div class="hex_footer">
-					 <span class="fa fa-twitter"></span>
-					</div>
-                    </a>
-                  <a href="#">
-                 	<div class="hex_footer">
-					 <span class="fa fa-linkedin"></span>
-					</div>
-                 </a>
-                <a href="#">
-                	<div class="hex_footer">
-					 <span class="fa fa-rss"></span>
-					</div>
-                </a>
+            <!-- /.main-navigation -->
+        </div>
+        <!-- /.site-header -->
+        <div id="menu-container">
+            <!-- gallery start -->
+            <div class="content homepage" id="menu-1">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="Menu1" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!-- gallery end -->
+            <!-- team start -->
+            <div class="content team" id="menu-2">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="Menu2" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!--team end-->
+            <div class="clear"></div>
+            <!-- service start -->
+            <div class="content services" id="menu-3">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="Menu3" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!-- service end -->
+            <!-- contact start -->
+            <div class="content errores" id="menu-4">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="Menu4" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!-- service end -->
+            <!-- contact start -->
+            <div class="content contact" id="menu-5">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="Menu5" runat="server"></asp:ContentPlaceHolder>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- footer end -->    
-	<script>
-	$('.gallery_more').click(function(){
-		var $this = $(this);
-		$this.toggleClass('gallery_more');
-		if($this.hasClass('gallery_more')){
-			$this.text('Load More');			
-		} else {
-			$this.text('Load Less');
-		}
-	});
-    </script>
-<!-- templatemo 400 polygon -->      
+        <!-- contact end -->
+        <!-- footer start -->
+        <div class="templatemo_footer">
+            <div class="row">
+                <div class="col-md-9 col-sm-12">
+                    <span>Copyright &copy; 2017 Universidad de San Carlos</span>
+                </div>
+                <div class="col-md-3 col-sm-12 templatemo_rfooter">
+                    <a href="#">
+                        <div class="hex_footer">
+                            <span class="fa fa-facebook"></span>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="hex_footer">
+                            <span class="fa fa-twitter"></span>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="hex_footer">
+                            <span class="fa fa-linkedin"></span>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="hex_footer">
+                            <span class="fa fa-rss"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- footer end -->
+        <script>
+            $('.gallery_more').click(function () {
+                var $this = $(this);
+                $this.toggleClass('gallery_more');
+                if ($this.hasClass('gallery_more')) {
+                    $this.text('Load More');
+                } else {
+                    $this.text('Load Less');
+                }
+            });
+        </script>
+        <!-- templatemo 400 polygon -->
     </form>
 </body>
 </html>

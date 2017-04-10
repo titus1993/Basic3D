@@ -29,6 +29,8 @@ c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\
 c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\Basic3D.pdb
 c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.csprojResolveAssemblyReference.cache
 c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.dll
 c:\users\titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.pdb
+C:\Users\Titus\Documents\Visual Studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\ColorCode.dll
+C:\Users\Titus\Documents\Visual Studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\ColorCode.pdb
+C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.csprojResolveAssemblyReference.cache

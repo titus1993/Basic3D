@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="MaestraIntermedio.master.cs" Inherits="Basic3D.MaestraIntermedio" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+</asp:Content>
+<asp:Content ID="RMenu" ContentPlaceHolderID="ResponsiveMenu" runat="server">
+    
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
+    
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Menu1" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="Menu4" runat="server">
+</asp:Content>

@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="MaestraAvanzado.master.cs" Inherits="Basic3D.MaestraAvanzado" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+</asp:Content>
+
+<asp:Content ID="ARM" ContentPlaceHolderID="ActivarRM" runat="server">
+    <a href="#" class="menu-toggle-btn">
+        <i class="fa fa-bars"></i>
+    </a>
+</asp:Content>
+<asp:Content ID="RMenu" ContentPlaceHolderID="ResponsiveMenu" runat="server">
+    <ul>
+        <li><a class="show-1 templatemo_home" href="#">Edición</a></li>
+        <li><a class="show-2 templatemo_page2" href="#">Debug</a></li>
+        <li><a class="show-3 templatemo_page3" href="#">Optimizar</a></li>
+        <li><a class="show-4 templatemo_page4" href="#">Errores</a></li>
+        <li><a class="show-5 templatemo_page5" href="#">Reportes</a></li>
+    </ul>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
+    <ul>
+        <li><a class="show-1 templatemo_home" href="#">
+            <span class="fa fa-pencil"></span>
+            Edición</a></li>
+        <li><a class="show-2 templatemo_page2" href="#">
+            <span class="fa fa-bug"></span>
+            Debug</a></li>
+        <li><a class="show-3 templatemo_page3" href="#">
+            <span class="fa fa-line-chart"></span>
+            Optimizar</a></li>
+        <li><a class="show-4 templatemo_page4" href="#">
+            <span class="fa fa-calendar-times-o"></span>
+            Errores</a></li>
+        <li><a class="show-5 templatemo_page5" href="#">
+            <span class="fa fa-navicon"></span>
+            Reportes</a></li>
+    </ul>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Menu1" runat="server">
+    <h1>menu1</h1>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">
+    <h1>menu2</h1>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">
+    <h1>menu3</h1>
+</asp:Content>
+<asp:Content ID="Menu4" ContentPlaceHolderID="Menu4" runat="server">
+    <h1>menu4</h1>
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server">
+    <h1>menu5</h1>
+</asp:Content>
