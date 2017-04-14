@@ -503,8 +503,69 @@
     <Content Include="Librerias\Blocky\tests\playground.html" />
     <Content Include="Librerias\Blocky\tests\workspace_svg\index.html" />
     <Content Include="Librerias\Blocky\tests\workspace_svg\workspace_svg_test.js" />
+    <Content Include="Librerias\CodeMirror\Autocompletar\anyword-hint.js" />
+    <Content Include="Librerias\CodeMirror\Autocompletar\css-hint.js" />
+    <Content Include="Librerias\CodeMirror\Autocompletar\javascript-hint.js" />
+    <Content Include="Librerias\CodeMirror\Autocompletar\show-hint.css" />
+    <Content Include="Librerias\CodeMirror\Autocompletar\show-hint.js" />
+    <Content Include="Librerias\CodeMirror\simple.js" />
+    <Content Include="Librerias\CodeMirror\basic3d.js" />
+    <Content Include="Librerias\CodeMirror\codemirror.css" />
+    <Content Include="Librerias\CodeMirror\codemirror.js" />
+    <Content Include="Librerias\CodeMirror\javascript.js" />
+    <Content Include="Librerias\CodeMirror\Temas\3024-day.css" />
+    <Content Include="Librerias\CodeMirror\Temas\3024-night.css" />
+    <Content Include="Librerias\CodeMirror\Temas\abcdef.css" />
+    <Content Include="Librerias\CodeMirror\Temas\ambiance-mobile.css" />
+    <Content Include="Librerias\CodeMirror\Temas\ambiance.css" />
+    <Content Include="Librerias\CodeMirror\Temas\base16-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\base16-light.css" />
+    <Content Include="Librerias\CodeMirror\Temas\bespin.css" />
+    <Content Include="Librerias\CodeMirror\Temas\blackboard.css" />
+    <Content Include="Librerias\CodeMirror\Temas\cobalt.css" />
+    <Content Include="Librerias\CodeMirror\Temas\colorforth.css" />
+    <Content Include="Librerias\CodeMirror\Temas\dracula.css" />
+    <Content Include="Librerias\CodeMirror\Temas\duotone-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\duotone-light.css" />
+    <Content Include="Librerias\CodeMirror\Temas\eclipse.css" />
+    <Content Include="Librerias\CodeMirror\Temas\elegant.css" />
+    <Content Include="Librerias\CodeMirror\Temas\erlang-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\hopscotch.css" />
+    <Content Include="Librerias\CodeMirror\Temas\icecoder.css" />
+    <Content Include="Librerias\CodeMirror\Temas\isotope.css" />
+    <Content Include="Librerias\CodeMirror\Temas\lesser-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\liquibyte.css" />
+    <Content Include="Librerias\CodeMirror\Temas\material.css" />
+    <Content Include="Librerias\CodeMirror\Temas\mbo.css" />
+    <Content Include="Librerias\CodeMirror\Temas\mdn-like.css" />
+    <Content Include="Librerias\CodeMirror\Temas\midnight.css" />
+    <Content Include="Librerias\CodeMirror\Temas\monokai.css" />
+    <Content Include="Librerias\CodeMirror\Temas\neat.css" />
+    <Content Include="Librerias\CodeMirror\Temas\neo.css" />
+    <Content Include="Librerias\CodeMirror\Temas\night.css" />
+    <Content Include="Librerias\CodeMirror\Temas\panda-syntax.css" />
+    <Content Include="Librerias\CodeMirror\Temas\paraiso-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\paraiso-light.css" />
+    <Content Include="Librerias\CodeMirror\Temas\pastel-on-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\railscasts.css" />
+    <Content Include="Librerias\CodeMirror\Temas\rubyblue.css" />
+    <Content Include="Librerias\CodeMirror\Temas\seti.css" />
+    <Content Include="Librerias\CodeMirror\Temas\solarized.css" />
+    <Content Include="Librerias\CodeMirror\Temas\the-matrix.css" />
+    <Content Include="Librerias\CodeMirror\Temas\tomorrow-night-bright.css" />
+    <Content Include="Librerias\CodeMirror\Temas\tomorrow-night-eighties.css" />
+    <Content Include="Librerias\CodeMirror\Temas\ttcn.css" />
+    <Content Include="Librerias\CodeMirror\Temas\twilight.css" />
+    <Content Include="Librerias\CodeMirror\Temas\vibrant-ink.css" />
+    <Content Include="Librerias\CodeMirror\Temas\xq-dark.css" />
+    <Content Include="Librerias\CodeMirror\Temas\xq-light.css" />
+    <Content Include="Librerias\CodeMirror\Temas\yeti.css" />
+    <Content Include="Librerias\CodeMirror\Temas\zenburn.css" />
     <Content Include="Librerias\ColorCode.dll" />
     <Content Include="Librerias\ColorCode.pdb" />
+    <Content Include="Librerias\Jison\calculadora.js" />
+    <Content Include="Logica\Analisis\archivo1.js" />
+    <Content Include="Logica\Analisis\archivo2.js" />
     <Content Include="NivelAvanz.aspx" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -753,6 +814,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

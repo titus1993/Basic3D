@@ -1,6 +1,18 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="MaestraAvanzado.master.cs" Inherits="Basic3D.MaestraAvanzado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <script src="Librerias/CodeMirror/codemirror.js"></script>
+    <link rel="stylesheet" href="Librerias/CodeMirror/codemirror.css" />
+    <link rel="stylesheet" href="Librerias/CodeMirror/Temas/ambiance.css" />
+    <link rel="stylesheet" href="Librerias/CodeMirror/Temas/panda-syntax.css" />
+    <%--<script src="Librerias/CodeMirror/simplemode.js"></script>--%>
+    <script src="Librerias/CodeMirror/simple.js"></script>
+    <script src="Librerias/CodeMirror/Autocompletar/anyword-hint.js"></script>
+    <script src="Librerias/CodeMirror/basic3d.js"></script>
+    <script src="Librerias/CodeMirror/Autocompletar/show-hint.js"></script>
+    <link rel="stylesheet" href="Librerias/CodeMirror/Autocompletar/show-hint.css" />
+
+    <script src="Librerias/Jison/calculadora.js"></script>
 </asp:Content>
 
 <asp:Content ID="ARM" ContentPlaceHolderID="ActivarRM" runat="server">
@@ -37,17 +49,13 @@
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Menu1" runat="server">
-    <h1>menu1</h1>
+    <asp:ContentPlaceHolder ID="Edicion" runat="server"></asp:ContentPlaceHolder>    
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">
-    <h1>menu2</h1>
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">    
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">
-    <h1>menu3</h1>
+<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">    
 </asp:Content>
-<asp:Content ID="Menu4" ContentPlaceHolderID="Menu4" runat="server">
-    <h1>menu4</h1>
+<asp:Content ID="Menu4" ContentPlaceHolderID="Menu4" runat="server">    
 </asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server">
-    <h1>menu5</h1>
+<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server">   
 </asp:Content>

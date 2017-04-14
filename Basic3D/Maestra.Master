@@ -69,40 +69,31 @@
         </div>
         <!-- /.site-header -->
         <div id="menu-container">
+
             <!-- gallery start -->
-            <div class="content homepage" id="menu-1">
-                <div class="container">
-                    <asp:ContentPlaceHolder ID="Menu1" runat="server"></asp:ContentPlaceHolder>
-                </div>
+            <div class="content homepage" id="menu-1">                
+                    <asp:ContentPlaceHolder ID="Menu1" runat="server"></asp:ContentPlaceHolder>                
             </div>
             <!-- gallery end -->
             <!-- team start -->
             <div class="content team" id="menu-2">
-                <div class="container">
-                    <asp:ContentPlaceHolder ID="Menu2" runat="server"></asp:ContentPlaceHolder>
-                </div>
+                    <asp:ContentPlaceHolder ID="Menu2" runat="server"></asp:ContentPlaceHolder>                
             </div>
             <!--team end-->
             <div class="clear"></div>
             <!-- service start -->
             <div class="content services" id="menu-3">
-                <div class="container">
                     <asp:ContentPlaceHolder ID="Menu3" runat="server"></asp:ContentPlaceHolder>
-                </div>
             </div>
             <!-- service end -->
             <!-- contact start -->
             <div class="content errores" id="menu-4">
-                <div class="container">
                     <asp:ContentPlaceHolder ID="Menu4" runat="server"></asp:ContentPlaceHolder>
-                </div>
             </div>
             <!-- service end -->
             <!-- contact start -->
             <div class="content contact" id="menu-5">
-                <div class="container">
                     <asp:ContentPlaceHolder ID="Menu5" runat="server"></asp:ContentPlaceHolder>
-                </div>
             </div>
         </div>
         <!-- contact end -->

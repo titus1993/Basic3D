@@ -266,7 +266,7 @@ a.menu-toggle-btn {
 .hexagonservices a.hlinkbott:hover .hexa {
   background: #b69e40;
 }
-.templatemo_servicetext	{ float: left; margin-top: 230px; }
+.templatemo_servicetext	{ float: initial; margin-top: 240px; }
 .templatemo_hexservices	{ width: 20%; margin-top: -10%; margin-left: 6.67%; margin-right: 6.66%;}
 .templatemo_hexservices p{ text-align: center; }
 
