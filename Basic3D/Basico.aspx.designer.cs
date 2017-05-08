@@ -10,6 +10,6 @@
 namespace Basic3D {
     
     
-    public partial class NivelAvanzado {
+    public partial class Basico {
     }
 }

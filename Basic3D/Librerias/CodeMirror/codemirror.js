@@ -3134,7 +3134,7 @@ function onBlur(cm, e) {
     rmClass(cm.display.wrapper, "CodeMirror-focused")
   }
   clearInterval(cm.display.blinker)
-  setTimeout(function () { if (!cm.state.focused) { cm.display.shift = false } }, 150)
+  //setTimeout(function () { if (!cm.state.focused) { cm.display.shift = false } }, 150)
 }
 
 // Re-align line numbers and gutter marks to compensate for

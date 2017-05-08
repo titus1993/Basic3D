@@ -1,0 +1,62 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <category name="Sentencias" colour="#a55b5b">
+    <block type="if"></block>
+    <block type="if_else"></block>
+    <block type="switch">
+      <field name="modo">true</field>
+    </block>
+  </category>
+  <category name="Ciclos" colour="#80a55b">
+    <block type="while"></block>
+    <block type="do_while"></block>
+  </category>
+  <category name="Branching" colour="#5ba5a5">
+    <block type="break"></block>
+    <block type="continue"></block>
+  </category>
+  <category name="Expresiones" colour="#805ba5">
+    <block type="logico">
+      <field name="op">mas</field>
+    </block>
+    <block type="relacional">
+      <field name="op">igual</field>
+    </block>
+    <block type="aritmetico">
+      <field name="op">mas</field>
+    </block>
+    <block type="not"></block>
+    <block type="unario"></block>
+  </category>
+  <category name="Primitivas" colour="#a56d5b">
+    <block type="outstr">
+      <field name="valor">salida</field>
+    </block>
+    <block type="outnum">
+      <field name="valor">0</field>
+      <field name="comoentero">true</field>
+    </block>
+    <block type="instr">
+      <field name="variable">a</field>
+      <field name="msg">mensaje</field>
+    </block>
+    <block type="show">
+      <field name="valor">mensaje</field>
+    </block>
+    <block type="getnum">
+      <field name="cadena">0</field>
+      <field name="valor">bin</field>
+      <field name="NAME">0</field>
+    </block>
+    <block type="getbool">
+      <field name="cadena">true</field>
+    </block>
+    <block type="innum">
+      <field name="cadena">true</field>
+    </block>
+    <block type="getrandom"></block>
+    <block type="getlength">
+      <field name="NAME">item</field>
+    </block>
+  </category>
+  <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+</xml>

@@ -122,5 +122,5 @@ function initialize() {
       zoom: 12,
       center: new google.maps.LatLng(40.7823234,-73.9654161)
     };
-    var map = new google.maps.Map(document.getElementById('templatemo_map'),  mapOptions);
+    //var map = new google.maps.Map(document.getElementById('templatemo_map'),  mapOptions);
 }

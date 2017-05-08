@@ -1,9 +1,53 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="MaestraBasico.master.cs" Inherits="Basic3D.MaestraBasico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <script src="Librerias/CodeMirror/codemirror.js"></script>
+    <link rel="stylesheet" href="Librerias/CodeMirror/codemirror.css" />
+    <link rel="stylesheet" href="Librerias/CodeMirror/Temas/ambiance.css" />
+    <link rel="stylesheet" href="Librerias/CodeMirror/Temas/panda-syntax.css" />
+    <%--este se queda comentado <script src="Librerias/CodeMirror/simplemode.js"></script>--%>
+    <script src="Librerias/CodeMirror/simple.js"></script>
+    <script src="Librerias/CodeMirror/Autocompletar/anyword-hint.js"></script>
+    <script src="Librerias/CodeMirror/basic3d_elements.js"></script>
+    <script src="Librerias/CodeMirror/Autocompletar/show-hint.js"></script>
+    
+    <link rel="stylesheet" href="Librerias/CodeMirror/Autocompletar/show-hint.css" />
+</asp:Content>
+
+<asp:Content ID="ARM" ContentPlaceHolderID="ActivarRM" runat="server">
+    <a href="#" class="menu-toggle-btn">
+        <i class="fa fa-bars"></i>
+    </a>
+</asp:Content>
+<asp:Content ID="RMenu" ContentPlaceHolderID="ResponsiveMenu" runat="server">
+    <ul>
+        <li><a class="show-1 templatemo_home" href="#">Edición</a></li>
+        <li><a class="show-2 templatemo_page2" href="#">Debug</a></li>
+        <li><a class="show-3 templatemo_page3" href="#">Optimizar</a></li>
+        <li><a class="show-4 templatemo_page4" href="#">Errores</a></li>
+        <li><a class="show-5 templatemo_page5" href="#">Reportes</a></li>
+    </ul>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
+     <ul>
+        <li><a class="show-1 templatemo_home" href="#">
+            <span class="fa fa-pencil"></span>
+            Edición</a></li>
+        <li><a class="show-2 templatemo_page2" href="#">
+            <span class="fa fa-bug"></span>
+            Debug</a></li>
+        <li><a class="show-3 templatemo_page3" href="#">
+            <span class="fa fa-line-chart"></span>
+            Optimizar</a></li>
+        <li><a class="show-4 templatemo_page4" href="#">
+            <span class="fa fa-calendar-times-o"></span>
+            Errores</a></li>
+        <li><a class="show-5 templatemo_page5" href="#">
+            <span class="fa fa-navicon"></span>
+            Reportes</a></li>
+    </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Menu1" runat="server">
+    <asp:ContentPlaceHolder ID="Edicion" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">
 </asp:Content>

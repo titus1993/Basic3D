@@ -71,8 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Avanzado.aspx" />
+    <Content Include="Basico.aspx" />
     <Content Include="css\font-awesome.css" />
     <Content Include="index.aspx" />
+    <Content Include="Librerias\BasicBlocky\blocky.js" />
+    <Content Include="Librerias\BasicBlocky\bloques.js" />
+    <Content Include="Librerias\BasicBlocky\stubs.js" />
+    <Content Include="Librerias\BasicBlocky\toolbox.xml" />
+    <Content Include="Librerias\BasicBlocky\workspace.xml" />
     <Content Include="Librerias\Blocky\.gitignore" />
     <Content Include="Librerias\Blocky\accessible\app.component.js" />
     <Content Include="Librerias\Blocky\accessible\audio.service.js" />
@@ -509,7 +515,7 @@
     <Content Include="Librerias\CodeMirror\Autocompletar\show-hint.css" />
     <Content Include="Librerias\CodeMirror\Autocompletar\show-hint.js" />
     <Content Include="Librerias\CodeMirror\simple.js" />
-    <Content Include="Librerias\CodeMirror\basic3d.js" />
+    <Content Include="Librerias\CodeMirror\basic3d_elements.js" />
     <Content Include="Librerias\CodeMirror\codemirror.css" />
     <Content Include="Librerias\CodeMirror\codemirror.js" />
     <Content Include="Librerias\CodeMirror\javascript.js" />
@@ -566,6 +572,11 @@
     <Content Include="Librerias\Jison\calculadora.js" />
     <Content Include="Logica\Analisis\archivo1.js" />
     <Content Include="Logica\Analisis\archivo2.js" />
+    <Content Include="Logica\Ejecucion\Herramientas.js" />
+    <Content Include="Logica\Ejecucion\Simbolo.js" />
+    <Content Include="Logica\Ejecucion\Funciones.js" />
+    <Content Include="Logica\Gramatica\Basic3D.js" />
+    <Content Include="Logica\Gramatica\Basic3DElements.js" />
     <Content Include="NivelAvanz.aspx" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -702,6 +713,8 @@
     <Content Include="MaestraIntermedio.master" />
     <Content Include="MaestraAvanzado.master" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Logica\Gramatica\Basic3DElements.jison" />
+    <Content Include="Logica\Gramatica\Basic3D.jison" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -769,6 +782,13 @@
     </Compile>
     <Compile Include="Avanzado.aspx.designer.cs">
       <DependentUpon>Avanzado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Basico.aspx.cs">
+      <DependentUpon>Basico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Basico.aspx.designer.cs">
+      <DependentUpon>Basico.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

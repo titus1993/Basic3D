@@ -33,3 +33,4 @@ C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\
 C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.dll
 C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.pdb
+C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Basic3D\obj\Debug\Basic3D.csprojResolveAssemblyReference.cache

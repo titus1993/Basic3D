@@ -23,6 +23,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   var jsonMode = parserConfig.json || jsonldMode;
   var isTS = parserConfig.typescript;
   var wordRE = parserConfig.wordCharacters || /[\w$\xa1-\uffff]/;
+  
 
   // Tokenizer
 

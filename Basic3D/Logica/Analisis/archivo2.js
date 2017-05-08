@@ -1,4 +1,5 @@
 ﻿
+var titus="hola";
 
 function clase(hola) {
     //alert(hola);
@@ -7,5 +8,6 @@ function clase(hola) {
 }
 
 clase.prototype.gethola = function () {
+    
     return this.hola;
 };

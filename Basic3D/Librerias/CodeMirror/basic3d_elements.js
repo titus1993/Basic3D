@@ -1,4 +1,4 @@
-﻿CodeMirror.defineSimpleMode("basic3d", {
+﻿CodeMirror.defineSimpleMode("basic3d_elements", {
     // The start state contains the rules that are intially used
     start: [
         // The regex matches the token, the token property contains the type
@@ -17,9 +17,9 @@
             regex: /0x[a-f\d]+|(?:\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/i,
             token: "number"
         },
-        { regex: /%.*/, token: "comment" },
+        { regex: /%%.*/, token: "comment" },
         // A next property will cause the mode to move to a different state
-        { regex: /¿/, token: "comment", next: "comment" },
+        { regex: /¿¿/, token: "comment", next: "comment" },
         { regex: /[-+\/*^=<>!|\?&]+/, token: "operator" },
         // indent and dedent properties guide autoindentation
         { regex: /[\{\[\(]/, indent: true },
@@ -32,7 +32,7 @@
     ],
     // The multi-line comment state.
     comment: [
-        { regex: /.*?\?/, token: "comment", next: "start" },
+        { regex: /.*?\?\?/, token: "comment", next: "start" },
         { regex: /.*/, token: "comment" }
     ],
     // The meta property contains global information about the mode. It

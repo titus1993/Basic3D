@@ -5,14 +5,14 @@
     <link rel="stylesheet" href="Librerias/CodeMirror/codemirror.css" />
     <link rel="stylesheet" href="Librerias/CodeMirror/Temas/ambiance.css" />
     <link rel="stylesheet" href="Librerias/CodeMirror/Temas/panda-syntax.css" />
-    <%--<script src="Librerias/CodeMirror/simplemode.js"></script>--%>
+    <%--este se queda comentado <script src="Librerias/CodeMirror/simplemode.js"></script>--%>
     <script src="Librerias/CodeMirror/simple.js"></script>
     <script src="Librerias/CodeMirror/Autocompletar/anyword-hint.js"></script>
-    <script src="Librerias/CodeMirror/basic3d.js"></script>
+    <script src="Librerias/CodeMirror/basic3d_elements.js"></script>
     <script src="Librerias/CodeMirror/Autocompletar/show-hint.js"></script>
     <link rel="stylesheet" href="Librerias/CodeMirror/Autocompletar/show-hint.css" />
 
-    <script src="Librerias/Jison/calculadora.js"></script>
+    <%--<script src="Librerias/Jison/calculadora.js"></script>--%>
 </asp:Content>
 
 <asp:Content ID="ARM" ContentPlaceHolderID="ActivarRM" runat="server">
