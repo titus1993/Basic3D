@@ -572,6 +572,7 @@
     <Content Include="Librerias\Jison\calculadora.js" />
     <Content Include="Logica\Analisis\archivo1.js" />
     <Content Include="Logica\Analisis\archivo2.js" />
+    <Content Include="Logica\Ejecucion\Generar3D.js" />
     <Content Include="Logica\Ejecucion\Herramientas.js" />
     <Content Include="Logica\Ejecucion\Simbolo.js" />
     <Content Include="Logica\Ejecucion\Funciones.js" />

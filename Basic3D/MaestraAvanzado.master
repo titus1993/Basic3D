@@ -56,6 +56,8 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">    
 </asp:Content>
 <asp:Content ID="Menu4" ContentPlaceHolderID="Menu4" runat="server">    
+    <asp:ContentPlaceHolder ID="Errores" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server">   
+<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server"> 
+    <asp:ContentPlaceHolder ID="Reportes" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

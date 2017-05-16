@@ -1,18 +1,50 @@
 <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-  <category name="Sentencias" colour="#a55b5b">
+  <category name="Variables" colour="#a55b6d">
+    <block type="declararacion">
+      <field name="tipo">num</field>
+      <field name="variable">a</field>
+    </block>
+    <block type="asignacion">
+      <field name="variable">a</field>
+    </block>
+    <block type="variable">
+      <field name="variable">a</field>
+    </block>
+    <block type="declararacion_for">
+      <field name="tipo">num</field>
+      <field name="variable">a</field>
+    </block>
+    <block type="asignacion_for">
+      <field name="variable">a</field>
+    </block>
+  </category>
+  <category name="Sentencias" colour="#5b6da5">
     <block type="if"></block>
     <block type="if_else"></block>
     <block type="switch">
       <field name="modo">true</field>
     </block>
+    <block type="case"></block>
+    <block type="rangocase"></block>
+    <block type="default"></block>
   </category>
-  <category name="Ciclos" colour="#80a55b">
+  <category name="Branching" colour="#6da55b">
+    <block type="break"></block>
+    <block type="break_id">
+      <field name="id">a</field>
+    </block>
+    <block type="continue"></block>
+  </category>
+  <category name="Ciclos" colour="#a5805b">
     <block type="while"></block>
     <block type="do_while"></block>
-  </category>
-  <category name="Branching" colour="#5ba5a5">
-    <block type="break"></block>
-    <block type="continue"></block>
+    <block type="do_whilex"></block>
+    <block type="repeat_until"></block>
+    <block type="for"></block>
+    <block type="loop">
+      <field name="id">a</field>
+    </block>
+    <block type="count"></block>
   </category>
   <category name="Expresiones" colour="#805ba5">
     <block type="logico">
@@ -26,8 +58,18 @@
     </block>
     <block type="not"></block>
     <block type="unario"></block>
+    <block type="booleano">
+      <field name="valor">true</field>
+    </block>
+    <block type="cadena">
+      <field name="valor">cadena</field>
+    </block>
+    <block type="numero">
+      <field name="valor">0</field>
+    </block>
+    <block type="null"></block>
   </category>
-  <category name="Primitivas" colour="#a56d5b">
+  <category name="Primitivas" colour="#5ba593">
     <block type="outstr">
       <field name="valor">salida</field>
     </block>
@@ -45,7 +87,7 @@
     <block type="getnum">
       <field name="cadena">0</field>
       <field name="valor">bin</field>
-      <field name="NAME">0</field>
+      <field name="defecto">0</field>
     </block>
     <block type="getbool">
       <field name="cadena">true</field>
@@ -55,8 +97,12 @@
     </block>
     <block type="getrandom"></block>
     <block type="getlength">
-      <field name="NAME">item</field>
+      <field name="variable">a</field>
     </block>
   </category>
-  <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+  <category name="Excepciones" colour="#93a55b">
+    <block type="exepcion">
+      <field name="valor">null</field>
+    </block>
+  </category>
 </xml>
