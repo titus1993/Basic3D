@@ -22,6 +22,24 @@ namespace Basic3D {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Edicion;
         
         /// <summary>
+        /// Control Debug.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Debug;
+        
+        /// <summary>
+        /// Control Optimizar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Optimizar;
+        
+        /// <summary>
         /// Control Errores.
         /// </summary>
         /// <remarks>

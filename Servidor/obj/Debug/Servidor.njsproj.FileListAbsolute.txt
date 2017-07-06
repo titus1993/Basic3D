@@ -1,1 +1,2 @@
+C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Servidor\obj\Debug\Servidor.njsprojResolveAssemblyReference.cache
 C:\Users\Titus\documents\visual studio 2017\Projects\[Compi2]Proyect2_201213587\Servidor\bin\Microsoft.NodejsTools.WebRole.dll

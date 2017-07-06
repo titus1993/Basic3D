@@ -173,91 +173,269 @@
             <a href="#" class="myButton"><span class="fa fa-upload"></span></a>   
             <a href="#" class="myButton"><span class="fa fa-download"></span></a>   
             <a href="#" class="myButton" onclick="return Analizar()"><span class="fa fa-play" ></span></a>
-            <a href="#" class="myButton"><span class="fa fa-bug"></span></a>           
+            <a href="#" class="myButton"><span class="fa fa-upload"></span></a>   
+            <a href="#" class="myButton"><span class="fa fa-download"></span></a>           
         </div>
     </center>
     <div id="Editores" style="margin-left: 1%; margin-right: 1%;">
         <div id="codeeditor" style="width: 45%; float: left; margin-right: 1px; height: 100%; margin-left: 3.5%;"></div>
         <script> 
-            var sc = document.getElementById("modecode");
             var editor = CodeMirror(document.getElementById("codeeditor"), {
                 mode: "basic3d_elements",
                 theme: "ambiance",
+                styleActiveLine: true,
+                autoCloseBrackets: true,
+                tabSize: 5,
                 lineNumbers: true,
-                extraKeys: { "Ctrl-Space": "autocomplete" }
+                extraKeys: {
+                    "F11": function (cm) {
+                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc": function (cm) {
+                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    },
+                    "Ctrl-Space": "autocomplete"
+                }
             });
         </script>
         <div id="elementos" style="width: 45%; float: left; margin-left: 3%; height: 100%;"></div>
         <script>
-                var editorelementos = CodeMirror(document.getElementById("elementos"), {
-                    mode: "basic3d_elements",
-                    theme: "ambiance",
-                    lineNumbers: true,
-                    extraKeys: { "Ctrl-Space": "autocomplete" }
-                });
+            var editorelementos = CodeMirror(document.getElementById("elementos"), {
+                mode: "basic3d_elements",
+                theme: "ambiance",
+                styleActiveLine: true,
+                autoCloseBrackets: true,
+                tabSize: 5,
+                lineNumbers: true,
+                extraKeys: {
+                    "F11": function (cm) {
+                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc": function (cm) {
+                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    },
+                    "Ctrl-Space": "autocomplete"
+                }
+            });
         </script>
     </div>
     <script src="Logica/Analisis/archivo1.js"></script>
     <script src="Logica/Analisis/archivo2.js"></script>
     <script src="Logica/Gramatica/Basic3DElements.js"></script>
     <script src="Logica/Gramatica/Basic3D.js"></script>
+    <script src="Logica/Gramatica/Codigo3D.js"></script>
+    <script src="Logica/Ejecucion/Ejecutar3D.js"></script>
     <script src="Logica/Ejecucion/Funciones.js"></script>
     <script src="Logica/Ejecucion/Herramientas.js"></script>
     <script src="Logica/Ejecucion/Simbolo.js"></script>
     <script src="Logica/Ejecucion/Generar3D.js"></script>
+    <script src="Logica/Ejecucion/EjecutarDebug.js"></script>
+
 
     <script>
-                ///<reference path="Logica/Gramatica/Basic3D.js" />
-                function AnalizarElementos() {
-                    try {
-                        this.raiz = Basic3DElements.parse(editorelementos.getValue());
+            ///<reference path="Logica/Gramatica/Basic3D.js" />
+            function AnalizarElementos() {
+                try {
+                    this.raiz = Basic3DElements.parse(editorelementos.getValue());
 
-                    } catch (error) {
-                        alert(error.message);
-                    }
-
-                    /*if (a == undefined) {
-                        alert("se econtraro errores");
-                    } else {
-    
-                        editor.setValue(a+'\n');
-                    }*/
-                    alert(decirhola1());
-                    return false;
-                    //var elemento = document.getElementById("elementos");
-                    //elemento.textContent = entrada.textContent;
-
+                } catch (error) {
+                    alert(error.message);
                 }
 
-                function Analizar() {
-                    try {
-                        InicializarHerramientas();
-                        this.raiz = Basic3D.parse(editor.getValue());
-                        if (this.raiz) {
+                /*if (a == undefined) {
+                    alert("se econtraro errores");
+                } else {
+ 
+                    editor.setValue(a+'\n');
+                }*/
+                //alert(decirhola1());
+                return false;
+                //var elemento = document.getElementById("elementos");
+                //elemento.textContent = entrada.textContent;
+
+            }
+
+            function Analizar() {
+                try {
+                    InicializarHerramientas();
+                    this.raiz = Basic3D.parse(editor.getValue());
+                    if (this.raiz) {
+                        this.element = Basic3DElements.parse(editorelementos.getValue());
+                        if (this.element){
                             setPosGlobal(TablaSimbolos);
                             generarReporteSimbolos();
-                            GeneracionC3D();
-
-                        } else {
-                            alert("Se encontraron errores");
-                        }
-                    } catch (error) {
-                        alert(error.message);
-                    }
-
-                    /*if (a == undefined) {
-                        alert("se econtraro errores");
+                            var cod = GeneracionC3D();     
+                            if (ContarErrores()) {
+                                //editorelementos.setValue(N3D.Codigo);
+                                TBDebug.setValue(cod);
+                                alert("Codigo 3D generado exitosamente.");
+                            } else {
+                                alert("Se encontraron Errores");
+                            }
+                        }                        
                     } else {
-    
-                        editor.setValue(a+'\n');
-                    }*/
-                    return false;
-                    //var elemento = document.getElementById("elementos");
-                    //elemento.textContent = entrada.textContent;
-
+                        alert("Se encontraron errores");
+                    }
+                } catch (error) {
+                    alert(error.message);
+                    alert("se encontraron errores");
                 }
+                return false;
+
+            }
     </script>
 
+</asp:Content>
+
+<asp:Content ID="Debuguer" ContentPlaceHolderID="Debug" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <center>
+        <div style="width:30%; margin-left:1%; margin-right:1%; margin-bottom:20px;" >
+            
+            <a href="#" class="myButton" onclick="return Analizar3D()"><span class="fa fa-play-circle"></span></a>   
+            <a href="#" class="myButton" onclick="return LlamarEjecutarDebug()"><span class="fa fa-play"></span></a>   
+            <a href="#" class="myButton" onclick="return setAvanzar()"><span class="fa fa-forward" ></span></a>
+            <a href="#" class="myButton"><span class="fa fa-stop"></span></a>       
+            <input id="slider" type="range"  min="100" max="2000" onchange="return setTiempo()"/>
+        </div>
+    </center>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    
+    <div style="margin-left: 1%; margin-right: 1%;">
+        <div style="width: 25%; float: left; margin-right: 1px; height: 100%; margin-left: 3.5%;">
+            <div id="TBDebug" style="width: 100%; float: left; margin-right: 1px; height: 60%; margin-left: 3.5%;"></div>
+            <h5 style="float: left; margin-right: 1px; margin-left: 3.5%;">Consola</h5>
+            <textarea id="TBConsola" style="white-space: nowrap; width: 100%; float: left; margin-right: 1px; height: 250px; margin-left: 3.5%; margin-top: 5px;"></textarea>
+        </div>
+        <script> 
+            
+            var TBDebug = CodeMirror(document.getElementById("TBDebug"), {
+                mode: "basic3d_elements",
+                theme: "ambiance",
+                styleActiveLine: true,
+                autoCloseBrackets: true,
+                lineNumbers: true,
+                tabSize: 5,
+                extraKeys: {
+                    "F11": function (cm) {
+                        cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                    },
+                    "Esc": function (cm) {
+                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                    },
+                    "Ctrl-Space": "autocomplete"
+                }
+            });
+            TBDebug.setValue("\n\n\n\n\n\n\n\n\n\n");
+            var Inter = null;
+            function LlamarEjecutarDebug() {
+                Inter = setInterval(function () {
+                    // Whatever you want to do after the wait
+
+                    if (Debug) {
+
+                        EjecutarDebug.Next();
+                    } else {
+                        try {
+                            this.raizd = Codigo3D.parse(TBDebug.getValue());
+                            if (this.raizd) {
+                                try {
+                                    EjecutarDebug = new Ejecutar3Debugg();
+                                } catch (error) {
+                                    alert(error.message);
+                                }
+                            }
+                        } catch (error) {
+                            alert("se encontraron erores");
+                        }
+                    }
+
+                }, Tiempo);
+
+                
+                return false;
+            }
+
+            function setTiempo() {
+                Tiempo = document.getElementById("slider").value;
+                //Avanzar = false;
+                return false;
+            }
+
+            function Analizar3D() {
+                try {
+                    this.raiz = Codigo3D.parse(TBDebug.getValue());
+                    if (this.raiz) {
+                        setTimeout(function () {
+                            // Whatever you want to do after the wait
+
+                            Ejecutar3D();
+
+                        }, Tiempo);
+                        alert("paso XD");
+                    } else {
+                        alert("Se encontraron errores");
+                    }
+                } catch (error) {
+                    alert(error.message);
+                }
+                return false;
+
+            }
+        </script>
+        <div id="Tablas" style="width: 65%; float: left; margin-left: 3%; height: 100%;">
+            <div style="width: 25%; float: left; margin-left: 3%; height: 100%;">
+                <div class="table-title">
+                    <h3 id="TituloStack">Stack = 0</h3>
+                </div>
+                <table id="TStack" class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Posicion</th>
+                            <th class="text-left">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 25%; float: left; margin-left: 3%; height: 100%;">
+                <div class="table-title">
+                    <h3 id="TituloHeap">Heap = 0</h3>
+                </div>
+                <table id="THeap" class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Posicion</th>
+                            <th class="text-left">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 25%; float: left; margin-left: 3%; height: 100%;">
+                <div class="table-title">
+                    <h3 id="TituloPool">String Pool = 0</h3>
+                </div>
+                <table id="TPool" class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Posicion</th>
+                            <th class="text-left">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
 </asp:Content>
 
 <asp:Content ID="Errores" ContentPlaceHolderID="Errores" runat="server">
@@ -276,7 +454,7 @@
     </table>
 </asp:Content>
 
-<asp:Content ID="Reportes" ContentPlaceHolderID="Reportes" runat="server">    
+<asp:Content ID="Reportes" ContentPlaceHolderID="Reportes" runat="server">
     <table id="tablasimbolo" class="table-fill">
         <thead>
             <tr>
@@ -291,5 +469,5 @@
         </thead>
         <tbody class="table-hover">
         </tbody>
-    </table>    
+    </table>
 </asp:Content>

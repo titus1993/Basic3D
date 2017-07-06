@@ -210,7 +210,7 @@ Blockly.Blocks['cadena'] = {
 Blockly.Blocks['exepcion'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["NullPointerException", "null"], ["MissingReturnStatement", "missing"], ["ArithmeticException", "arithmetic"], ["StackOverFlowException", "stack"], ["HeapOverFlowException", "heap"], ["PoolOverFlowException", "pool"]]), "valor");
+            .appendField(new Blockly.FieldDropdown([["NullPointerException", "NullPointerException"], ["MissingReturnStatement", "MissingReturnStatement"], ["ArithmeticException", "ArithmeticException"], ["StackOverFlowException", "StackOverFlowException"], ["HeapOverFlowException", "HeapOverFlowException"], ["PoolOverFlowException", "PoolOverFlowException"]]), "valor");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(65);
@@ -239,14 +239,17 @@ Blockly.Blocks['repeat_until'] = {
 Blockly.Blocks['getnum'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("getNum (")
-            .appendField(new Blockly.FieldTextInput("0"), "cadena")
+            .appendField("getNum (");
+        this.appendValueInput("cadena")
+            .setCheck(null);
+        this.appendValueInput("base")
+            .setCheck(null)
             .appendField(",");
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["bin", "bin"], ["hex", "hex"], ["dec", "dec"]]), "valor")
             .appendField(",");
+        this.appendValueInput("defecto")
+            .setCheck(null);
         this.appendDummyInput()
-            .appendField(new Blockly.FieldNumber(0), "defecto")
             .appendField(")");
         this.setInputsInline(true);
         this.setOutput(true, null);
@@ -259,8 +262,10 @@ Blockly.Blocks['getnum'] = {
 Blockly.Blocks['getbool'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("getBool (")
-            .appendField(new Blockly.FieldTextInput("true"), "cadena")
+            .appendField("getBool (");
+        this.appendValueInput("NAME")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(")");
         this.setInputsInline(true);
         this.setOutput(true, null);
@@ -273,8 +278,14 @@ Blockly.Blocks['getbool'] = {
 Blockly.Blocks['innum'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("inNum (")
-            .appendField(new Blockly.FieldTextInput("true"), "cadena")
+            .appendField("inNum (");
+        this.appendValueInput("num1")
+            .setCheck(null);
+        this.appendDummyInput()
+            .appendField(",");
+        this.appendValueInput("num2")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(")");
         this.setInputsInline(true);
         this.setOutput(true, null);
@@ -299,8 +310,10 @@ Blockly.Blocks['getrandom'] = {
 Blockly.Blocks['getlength'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("getLength (")
-            .appendField(new Blockly.FieldTextInput("a"), "variable")
+            .appendField("getLength (");
+        this.appendValueInput("NAME")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(")");
         this.setInputsInline(true);
         this.setOutput(true, null);
@@ -351,9 +364,12 @@ Blockly.Blocks['null'] = {
 Blockly.Blocks['outstr'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("outStr (")
-            .appendField(new Blockly.FieldTextInput("salida"), "valor")
+            .appendField("outStr (");
+        this.appendValueInput("NAME")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(")");
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(160);
@@ -365,8 +381,10 @@ Blockly.Blocks['outstr'] = {
 Blockly.Blocks['outnum'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("outNum (")
-            .appendField(new Blockly.FieldNumber(0), "valor")
+            .appendField("outNum (");
+        this.appendValueInput("NAME")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(", ")
             .appendField(new Blockly.FieldDropdown([["true", "true"], ["false", "false"]]), "comoentero")
             .appendField(")");
@@ -381,10 +399,14 @@ Blockly.Blocks['outnum'] = {
 Blockly.Blocks['instr'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("inStr (")
-            .appendField(new Blockly.FieldTextInput("a"), "variable")
-            .appendField(", ")
-            .appendField(new Blockly.FieldTextInput("mensaje"), "msg")
+            .appendField("inStr (");
+        this.appendValueInput("variable")
+            .setCheck(null);
+        this.appendDummyInput()
+            .appendField(", ");
+        this.appendValueInput("msg")
+            .setCheck(null);
+        this.appendDummyInput()
             .appendField(")");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -396,9 +418,10 @@ Blockly.Blocks['instr'] = {
 
 Blockly.Blocks['show'] = {
     init: function () {
+        this.appendValueInput("NAME")
+            .setCheck(null)
+            .appendField("show (");
         this.appendDummyInput()
-            .appendField("show (")
-            .appendField(new Blockly.FieldTextInput("mensaje"), "valor")
             .appendField(")");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -545,26 +568,6 @@ Blockly.Blocks['do_whilex'] = {
     }
 };
 
-Blockly.Blocks['declararacion'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Tipo")
-            .appendField(new Blockly.FieldDropdown([["num", "num"], ["str", "str"], ["bool", "bool"]]), "tipo");
-        this.appendDummyInput()
-            .appendField("Nombre")
-            .appendField(new Blockly.FieldTextInput("a"), "variable");
-        this.appendValueInput("valor")
-            .setCheck(null)
-            .appendField("Valor");
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(330);
-        this.setTooltip('Intruccion que declara una variable, si no se le asigna un valor por defecto se considerara como nula.');
-        this.setHelpUrl('');
-    }
-};
-
 Blockly.Blocks['asignacion'] = {
     init: function () {
         this.appendDummyInput()
@@ -582,25 +585,6 @@ Blockly.Blocks['asignacion'] = {
     }
 };
 
-Blockly.Blocks['declararacion_for'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Tipo")
-            .appendField(new Blockly.FieldDropdown([["num", "num"], ["str", "str"], ["bool", "bool"]]), "tipo");
-        this.appendDummyInput()
-            .appendField("Nombre")
-            .appendField(new Blockly.FieldTextInput("a"), "variable");
-        this.appendValueInput("valor")
-            .setCheck(null)
-            .appendField("Valor");
-        this.setInputsInline(true);
-        this.setOutput(true, "anterior_for");
-        this.setColour(330);
-        this.setTooltip('Intruccion que declara una variable, si no se le asigna un valor por defecto se considerara como nula.');
-        this.setHelpUrl('');
-    }
-};
-
 Blockly.Blocks['asignacion_for'] = {
     init: function () {
         this.appendDummyInput()
@@ -613,6 +597,45 @@ Blockly.Blocks['asignacion_for'] = {
         this.setOutput(true, null);
         this.setColour(330);
         this.setTooltip('Instruccion que le asigna un valor a una variable existente, si no se le asigna un valor se tomara por defecto.');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Blocks['declaracion_for'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Tipo")
+            .appendField(new Blockly.FieldDropdown([["num", "num"], ["str", "str"], ["bool", "bool"]]), "tipo");
+        this.appendDummyInput()
+            .appendField("Nombre")
+            .appendField(new Blockly.FieldTextInput("a"), "variable");
+        this.appendValueInput("valor")
+            .setCheck(null)
+            .appendField("Valor");
+        this.setInputsInline(true);
+        this.setOutput(true, null);
+        this.setColour(330);
+        this.setTooltip('Intruccion que declara una variable, si no se le asigna un valor por defecto se considerara como nula.');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Blocks['declaracion'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Tipo")
+            .appendField(new Blockly.FieldDropdown([["num", "num"], ["str", "str"], ["bool", "bool"]]), "tipo");
+        this.appendDummyInput()
+            .appendField("Nombre")
+            .appendField(new Blockly.FieldTextInput("a"), "variable");
+        this.appendValueInput("valor")
+            .setCheck(null)
+            .appendField("Valor");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(330);
+        this.setTooltip('Intruccion que declara una variable, si no se le asigna un valor por defecto se considerara como nula.');
         this.setHelpUrl('');
     }
 };

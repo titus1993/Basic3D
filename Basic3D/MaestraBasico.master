@@ -1,16 +1,21 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="MaestraBasico.master.cs" Inherits="Basic3D.MaestraBasico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-    <script src="Librerias/CodeMirror/codemirror.js"></script>
+        <script src="Librerias/CodeMirror/codemirror.js"></script>
     <link rel="stylesheet" href="Librerias/CodeMirror/codemirror.css" />
     <link rel="stylesheet" href="Librerias/CodeMirror/Temas/ambiance.css" />
     <link rel="stylesheet" href="Librerias/CodeMirror/Temas/panda-syntax.css" />
+    <link rel="stylesheet" href="Librerias/CodeMirror/ActiveLine/fullscreen.css" />
     <%--este se queda comentado <script src="Librerias/CodeMirror/simplemode.js"></script>--%>
     <script src="Librerias/CodeMirror/simple.js"></script>
+    <script src="Librerias/CodeMirror/ActiveLine/active-line.js"></script>
+    <script src="Librerias/CodeMirror/ActiveLine/closebrackets.js"></script>
+    <script src="Librerias/CodeMirror/ActiveLine/fullscreen.js"></script>
     <script src="Librerias/CodeMirror/Autocompletar/anyword-hint.js"></script>
     <script src="Librerias/CodeMirror/basic3d_elements.js"></script>
     <script src="Librerias/CodeMirror/Autocompletar/show-hint.js"></script>
-    
     <link rel="stylesheet" href="Librerias/CodeMirror/Autocompletar/show-hint.css" />
+
+    <%--<script src="Librerias/Jison/calculadora.js"></script>--%>
 </asp:Content>
 
 <asp:Content ID="ARM" ContentPlaceHolderID="ActivarRM" runat="server">
@@ -28,7 +33,7 @@
     </ul>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
-     <ul>
+    <ul>
         <li><a class="show-1 templatemo_home" href="#">
             <span class="fa fa-pencil"></span>
             Edición</a></li>
@@ -47,11 +52,17 @@
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Menu1" runat="server">
-    <asp:ContentPlaceHolder ID="Edicion" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="Edicion" runat="server"></asp:ContentPlaceHolder>    
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu2" runat="server">    
+    <asp:ContentPlaceHolder ID="Debug" runat="server"></asp:ContentPlaceHolder> 
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">
+<asp:Content ID="Content5" ContentPlaceHolderID="Menu3" runat="server">    
+    <asp:ContentPlaceHolder ID="Optimizar" runat="server"></asp:ContentPlaceHolder> 
 </asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="Menu4" runat="server">
+<asp:Content ID="Menu4" ContentPlaceHolderID="Menu4" runat="server">    
+    <asp:ContentPlaceHolder ID="Errores" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="Menu5" runat="server"> 
+    <asp:ContentPlaceHolder ID="Reportes" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

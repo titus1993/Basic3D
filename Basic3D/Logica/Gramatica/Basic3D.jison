@@ -74,10 +74,10 @@
 "&&"			{return '&&';}
 "&?"			{return '&?';}
 "|&"			{return '|&';}
+"!="			{return '!=';}
 "!"				{return '!';}
 "=="			{return '==';}
 "="				{return '=';}
-"!="			{return '!=';}
 ">="			{return '>=';}
 "<="			{return '<=';}
 ">"				{return '>';}
@@ -143,8 +143,8 @@ L_METODOS
 		{
 			for(var i = 0; i < $2.length; i++){
 				$1.push($2[i]);
-			}
-			$$ = $1;
+		}
+		$$ = $1;
 		}
 	| METODO 
 		{
@@ -170,9 +170,78 @@ METODO
 			$$.push(simbolo);
 		}
 	| TIPO '['']' '['']' ':' Id '(' L_PARAMETROS ')' '{' L_SENTENCIA '}'
+		{
+			var metodo = new Metodo($1 + "[]", $7, @1.first_line, @1.first_column + 1, $9, null);
+			var simbolo = new Simbolo ($1 + "[]", $7, "metodo", -1, 0, @1.first_line, @1.first_column + 1, $12, metodo);
+			for(var i = 0; i < $9.length; i++){
+				$9[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $9[i].Size;
+			}
+			for(var i = 0; i < $12.length; i++){
+				$12[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $12[i].Size;
+			}
+			for(var i =0; i < $9.length; i++){
+				$9[i].setPos(position);
+			}
+			for(var i =0; i < $12.length; i++){
+				$12[i].setPos(position);
+			}
+			position = 0;
+			metodo.Simbolo = simbolo;
+			$$ = new Array();
+			$$.push(simbolo);
+		}
 	| TIPO ':' Id '(' L_PARAMETROS ')' '{' L_SENTENCIA '}'
+		{
+			var metodo = new Metodo($1, $3, @1.first_line, @1.first_column + 1, $5, null);
+			var simbolo = new Simbolo ($1, $3, "metodo", -1, 0, @1.first_line, @1.first_column + 1, $8, metodo);
+			for(var i = 0; i < $5.length; i++){
+				$5[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $5[i].Size;
+			}
+			for(var i = 0; i < $8.length; i++){
+				$8[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $8[i].Size;
+			}
+			for(var i =0; i < $5.length; i++){
+				$5[i].setPos(position);
+			}
+			for(var i =0; i < $8.length; i++){
+				$8[i].setPos(position);
+			}
+			position = 0;
+			metodo.Simbolo = simbolo;
+			$$ = new Array();
+			$$.push(simbolo);
+		}
 	| TVoid ':' Id '(' L_PARAMETROS ')' '{' L_SENTENCIA '}'
-	| DECLARACION ';'
+		{
+			var metodo = new Metodo($1, $3, @1.first_line, @1.first_column + 1, $5, null);
+			var simbolo = new Simbolo ($1, $3, "metodo", -1, 0, @1.first_line, @1.first_column + 1, $8, metodo);
+			for(var i = 0; i < $5.length; i++){
+				$5[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $5[i].Size;
+			}
+			for(var i = 0; i < $8.length; i++){
+				$8[i].Padre = simbolo;
+				simbolo.Size = simbolo.Size + $8[i].Size;
+			}
+			for(var i =0; i < $5.length; i++){
+				$5[i].setPos(position);
+			}
+			for(var i =0; i < $8.length; i++){
+				$8[i].setPos(position);
+			}
+			position = 0;
+			metodo.Simbolo = simbolo;
+			$$ = new Array();
+			$$.push(simbolo);
+		}
+	| DECLARACION ';' 
+		{
+			$$ = $1;
+		}
 	;
 
 L_PARAMETROS
@@ -194,8 +263,26 @@ L_PARAMETRO
 
 PARAMETRO
 		: TIPO Id
+			{				
+				var de = new Declaracion($1, $2, null, null);
+				var simbolo = new Simbolo ($1, $2, "declaracion", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
+				de.Simbolo = simbolo;
+				$$ = simbolo;								
+			}
 		| TStr '*' Id
+			{				
+				var de = new Declaracion($1+"*", $3, null, null);
+				var simbolo = new Simbolo ($1, $3, "declaracion", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
+				de.Simbolo = simbolo;
+				$$ = simbolo;								
+			}
 		| TIPO Id L_DIMENSIONES
+			{
+				var de = new DeclaracionArreglo($1, $2, $3, null);
+				var simbolo = new Simbolo ($1, $2, "declaracionarreglo", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
+				de.Simbolo = simbolo;
+				$$ = simbolo;
+			}
 		;
 
 L_SENTENCIA 
@@ -205,8 +292,7 @@ L_SENTENCIA
 
 L_SENTENCIAS
 			: L_SENTENCIAS SENTENCIA 
-				{
-					
+				{					
 					for(var i = 0; i < $2.length; i++){
 						$1.push($2[i]);
 					}
@@ -272,17 +358,66 @@ SENTENCIA
 				$$ = new Array();
 				$$.push($1); 
 			}
-		| TBreak ';'
+		| TBreak ';' 
+			{
+				$$ = new Array();				 
+				var simbolo = new Simbolo ("break", "break", "break", 0, -1, @1.first_line, @1.first_column + 1, new Array(), null);
+				$$.push(simbolo);
+			}
 		| TBreak Id ';'
+			{
+				$$ = new Array();				 
+				var simbolo = new Simbolo ("break", "break", "break", 0, -1, @1.first_line, @1.first_column + 1, new Array(), $2);
+				$$.push(simbolo);
+			}
 		| TContinue ';'
+			{
+				$$ = new Array();				 
+				var simbolo = new Simbolo ("break", "break", "break", 0, -1, @1.first_line, @1.first_column + 1, new Array(), null);
+				$$.push(simbolo);
+			}
 		| TReturn ';'
+			{
+				$$ = new Array();				 
+				var simbolo = new Simbolo ("return", "return", "return", 0, -1, @1.first_line, @1.first_column + 1, new Array(), null);
+				$$.push(simbolo);
+			}
 		| TReturn EXP ';'
+			{
+				$$ = new Array();				 
+				var simbolo = new Simbolo ("return", "return", "return", 0, -1, @1.first_line, @1.first_column + 1, new Array(), $2);
+				$$.push(simbolo);
+			}
 		| FUNCIONES_PRIMITIVAS ';'
 		| EXEPTION ';'
+			{
+			$$ = new Array();
+				$$.push($1); 	
+			}
+		| OBJETO Id '('L_EXPS ')'
+			{
+				var llamada = new LlamadaMetodo($2, @1.first_line, @1.first_column + 1, $4, null);
+				var ob = new Objeto("metodo", $2, @1.first_line, @1.first_column + 1, llamada, null, null);
+				$1.InsertarHijo(ob);
+				$$ = new Simbolo ("obj", "obj", "obj", 0, 1, @1.first_line, @1.first_column + 1, new Array(), ob);
+				
+			}
+		| Id '('L_EXPS ')'
+			{
+				var llamada = new LlamadaMetodo($1, @1.first_line, @1.first_column + 1, $3, null);
+				var ob = new Objeto("metodo", $1, @1.first_line, @1.first_column + 1, llamada, null, null);
+				$$  = new Simbolo ("obj", "obj", "obj", 0, 1, @1.first_line, @1.first_column + 1, new Array(), ob);
+			
+			}
 		;
 
 EXEPTION
 		: TThrows '(' EXCEPCIONES ')'
+			{
+				var simbolo = new Simbolo ("excepcion", "excepcion", "excepcion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), $3);
+				$$ = new Array();
+				$$.push(simbolo);
+			}
 		;
 
 FUNCIONES_PRIMITIVAS
@@ -292,41 +427,158 @@ FUNCIONES_PRIMITIVAS
 
 FUNCIONES_PRIMITIVAS_VOID
 						: ToutStr '(' EXP ')'
+							{
+								var p = new Primitiva($1, $3, null, null, null);
+								var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+								p.Simbolo = simbolo;
+								$$ = simbolo;
+							}
 						| ToutNum '(' EXP ',' EXP ')'
+							{
+								var p = new Primitiva($1, $3, $5, null, null);
+								var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+								p.Simbolo = simbolo;
+								$$ = simbolo;
+							}
 						| TinStr '(' Id ',' EXP ')'
+							{
+								var p = new Primitiva($1, $3, $5, null, null);
+								var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+								p.Simbolo = simbolo;
+								$$ = simbolo;
+							}
 						| TShow '(' EXP ')'
+							{
+								var p = new Primitiva($1, $3, null, null, null);
+								var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+								p.Simbolo = simbolo;
+								$$ = simbolo;
+							}
 						;
 
 EXCEPCIONES
-			: TNullPointerException
-			| TMissingReturnStatement
-			| TArithmeticException
-			| TStackOverFlowException
-			| THeapOverFlowException
-			| TPoolOverFlowException
+			: TNullPointerException { $$ = yytext; }
+			| TMissingReturnStatement { $$ = yytext; }
+			| TArithmeticException { $$ = yytext; }
+			| TStackOverFlowException { $$ = yytext; }
+			| THeapOverFlowException { $$ = yytext; }
+			| TPoolOverFlowException { $$ = yytext; }
 			;
 
 FUNCIONES_PRIMITIVAS_VALOR
 							: TgetBool '(' EXP ')'
+								{
+									var p = new Primitiva($1, $3, null, null, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
 							| TgetNum '(' EXP ',' Cadena ',' EXP ')'
+								{
+									var p = new Primitiva($1, $3, $5, $7, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
 							| TinNum '(' EXP ',' EXP ')'
+								{
+									var p = new Primitiva($1, $3, $5, null, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
 							| TgetRandom '('  ')'
+								{
+									var p = new Primitiva($1, null, null, null, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
 							| TgetLength '(' Id ',' EXP ')'
-							| TgetLength '(' EXP ')'
+								{
+									var p = new Primitiva($1, $3, $5, null, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
+							| TgetLength '(' EXP ')' 
+								{
+									var p = new Primitiva($1, $3, null, null, null);
+									var simbolo = new Simbolo ("primitiva", "primitva", "primitiva", -1, 0, @1.first_line, @1.first_column + 1, new Array(), p);
+									p.Simbolo = simbolo;
+									$$ = simbolo;
+								}
 							;
 
 ASIGNACION 
-			: Id '=' VALOR 
-			| Id L_DIMENSIONESA '=' VALOR
+			: OBJETO Id '=' EXP
+				{
+					var ob = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, null, null);
+					$1.InsertarHijo(ob);
+					var asi = new Asignacion ($1, $4, null);
+					var simbolo = new Simbolo ("asignacion", "asignacion", "asignacion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), asi);
+					asi.Simbolo = simbolo;		
+					$$ = simbolo;
+				}
+			| OBJETO Id L_DIMENSIONESA '=' EXP
+				{
+					var llamada = new LlamadaArreglo($2, @1.first_line, @1.first_column + 1, $3, null);
+					var ob = new Objeto("arreglo", $2, @1.first_line, @1.first_column + 1, llamada, null, null);
+					$1.InsertarHijo(ob);
+					var asi = new AsignacionArreglo (ob, $3, $5, null);
+					var simbolo = new Simbolo ("asignacion", "asignacion", "asignacion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), asi);
+					asi.Simbolo = simbolo;		
+					$$ = simbolo;
+			
+				}
+			| Id '=' EXP
+				{
+					var ob = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, null, null);
+					var asi = new Asignacion (ob, $3, null);
+					var simbolo = new Simbolo ("asignacion", "asignacion", "asignacion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), asi);
+					asi.Simbolo = simbolo;		
+					$$ = simbolo;			
+				}
+			| Id L_DIMENSIONESA '=' EXP
+				{
+					var llamada = new LlamadaArreglo($1, @1.first_line, @1.first_column + 1, $2, null);
+					var ob = new Objeto("arreglo", $1, @1.first_line, @1.first_column + 1, llamada, null, null);
+					var asi = new AsignacionArreglo (ob, $2, $4, null);
+					var simbolo = new Simbolo ("asignacion", "asignacion", "asignacion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), asi);
+					asi.Simbolo = simbolo;		
+					$$ = simbolo;			
+				}
+			| Id '('L_EXPS ')' '=' EXP
+				{
+					var llamada = new LlamadaMetodo($1, @1.first_line, @1.first_column + 1, $3, null);
+					var ob = new Objeto("metodo", $1, @1.first_line, @1.first_column + 1, llamada, null, null);
+					var asi = new AsignacionMetodo (ob, $6, null);
+					var simbolo = new Simbolo ("asignacion", "asignacion", "asignacion", -1, 0, @1.first_line, @1.first_column + 1, new Array(), asi);
+					asi.Simbolo = simbolo;		
+					$$ = simbolo;				
+				}
 			;
 
 L_DIMENSIONESA
 				: L_DIMENSIONESA DIMENSIONA
+					{
+						for(var i = 0; i < $2.length; i++){
+							$1.push($2[i]);
+						}
+						$$ = $1;
+					}
 				| DIMENSIONA
+					{
+						$$ =$1;
+					}
 				;
 
 DIMENSIONA 
 			: '[' EXP ']'
+				{
+					$$ = new Array();
+					$$.push($2);
+				}
 			;
 
 DECLARACION
@@ -334,7 +586,7 @@ DECLARACION
 				{
 					$$ = new Array();
 					for(var i = 0; i < $2.length; i++){
-						var de = new Declaracion($1, $2[i], @1.first_line, @1.first_column + 1, $4, null);
+						var de = new Declaracion($1, $2[i], $4, null);
 						var simbolo = new Simbolo ($1, $2[i], "declaracion", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
 						de.Simbolo = simbolo;
 						$$.push(simbolo);
@@ -344,13 +596,21 @@ DECLARACION
 				{
 					$$ = new Array();
 					for(var i = 0; i < $2.length; i++){
-						var de = new Declaracion($1, $2[i], @1.first_line, @1.first_column + 1, null, null);
+						var de = new Declaracion($1, $2[i], null, null);
 						var simbolo = new Simbolo ($1, $2[i], "declaracion", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
 						de.Simbolo = simbolo;
 						$$.push(simbolo);
 					}				
 				}
-			| TArray ':' Id L_DIMENSIONES TOf TIPO
+			| TArray ':' Id L_DIMENSIONES TOf TIPO 
+				{
+					$$ = new Array();
+					var de = new DeclaracionArreglo($6, $3, $4, null);
+					var simbolo = new Simbolo ($6, $3, "declaracionarreglo", 0, 1, @1.first_line, @1.first_column + 1, new Array(), de);
+					de.Simbolo = simbolo;
+					$$.push(simbolo);
+
+				}
 			;
 L_ID 
 	: L_ID ',' Id
@@ -367,16 +627,38 @@ L_ID
 
 L_DIMENSIONES 
 			: L_DIMENSIONES DIMENSION
-			| DIMENSION;
+				{
+					for(var i = 0; i < $2.length; i++){
+						$1.push($2[i]);
+					}
+					$$ = $1;
+				}				
+			| DIMENSION
+				{
+					$$ =$1;
+				}
+			;
 
 DIMENSION
-		: '[' Num ']'
+		: '[' Num ']' 
+			{
+				$$ = new Array();
+				$$.push(new Dimension(1, $2));
+			}
 		| '[' Num '.' '.' Num ']'
+			{
+				$$ = new Array();
+				$$.push(new Dimension($2, $5));
+			}
 		;
 
 VALOR 
-		: EXP
+		: EXP { $$ = $1; }
 		| TCreate '(' Id ')'
+			{
+				$$ = new FNodoExpresion();
+				$$.IniciarNodo(null, null, "create", $3, @1.first_line, @1.first_column + 1, null);
+			}
 		;
 
 
@@ -398,7 +680,31 @@ SENTENCIA_IF
 					$$ = simbolo;					
 				}
 
-			| TIf '(' EXP ')' TThen '{' L_SENTENCIA '}' TElse '{' LSENTENCIA '}'
+			| TIf '(' EXP ')' TThen '{' L_SENTENCIA '}' TElse '{' L_SENTENCIA '}'
+				{		
+					var sino = new IfElse($3, $7, $11, null);
+					var simbolo = new Simbolo ("ifelse", "ifelse", "ifelse", -1, 0, @1.first_line, @1.first_column + 1, $7, sino);
+					sino.Simbolo = simbolo;
+
+					for(var i =0; i < $7.length; i++){
+						$7[i].Padre = simbolo;
+						if($7[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $7[i].Size;							
+						}
+					}		
+					
+					for(var i =0; i < $11.length; i++){
+						$11[i].Padre = simbolo;
+						if($11[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $11[i].Size;							
+						}
+					}		
+					$$ = simbolo;					
+				}
 			;
 
 SENTENCIA_SWITCH
@@ -449,18 +755,99 @@ VALOR_CASE
 
 SENTENCIA_WHILE
 				: TWhile '(' EXP ')' '{' L_SENTENCIA '}'
+					{		
+						var whi = new While($3, $6, null);
+						var simbolo = new Simbolo ("while", "while", "while", -1, 0, @1.first_line, @1.first_column + 1, $6, whi);
+						whi.Simbolo = simbolo;
+
+						for(var i =0; i < $6.length; i++){
+							$6[i].Padre = simbolo;
+							if($6[i].Rol == "declaracion"){
+								simbolo.Size++;
+							}else{
+								simbolo.Size = simbolo.Size + $6[i].Size;							
+							}
+						}					
+						$$ = simbolo;					
+					}
 				;
 
 SENTENCIA_DO
 			: TDo '{' L_SENTENCIA '}' TWhile '(' EXP ')'
+				{		
+					var dowhile = new Do($7, $3, null);
+					var simbolo = new Simbolo ("do", "do", "do", -1, 0, @1.first_line, @1.first_column + 1, $3, dowhile);
+					dowhile.Simbolo = simbolo;
+
+					for(var i =0; i < $3.length; i++){
+						$3[i].Padre = simbolo;
+						if($3[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $3[i].Size;							
+						}
+					}					
+					$$ = simbolo;					
+				}
 			;
 
 SENTENCIA_REPEAT
 				: TRepeat '{' L_SENTENCIA '}' TUntil '(' EXP ')'
+					{		
+						var rep = new Repeat($7, $3, null);
+						var simbolo = new Simbolo ("repeat", "repeat", "repeat", -1, 0, @1.first_line, @1.first_column + 1, $3, rep);
+						rep.Simbolo = simbolo;
+
+						for(var i =0; i < $3.length; i++){
+							$3[i].Padre = simbolo;
+							if($3[i].Rol == "declaracion"){
+								simbolo.Size++;
+							}else{
+								simbolo.Size = simbolo.Size + $3[i].Size;							
+							}
+						}					
+						$$ = simbolo;					
+					}
 				;
 
 SENTENCIA_FOR
 			: TFor '(' ASIGNACION ';' EXP ';' ASIGNACION_SIMPLIFICADA ')' '{' L_SENTENCIA '}'
+				{
+					var f = new For($3, $5, $7, $10, null);
+					var simbolo = new Simbolo ("for", "for", "for", -1, 0, @1.first_line, @1.first_column + 1, $10, f);
+					f.Simbolo = simbolo;
+					//asignamos el padre a la asignacion o declaracion
+					
+					for(var i =0; i < $3.length; i++){
+						$3[i].Padre = simbolo;
+						if($3[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $3[i].Size;							
+						}
+					}
+					
+					//asignamos el padre a la accion posterior
+					for(var i =0; i < $3.length; i++){
+						$3[i].Padre = simbolo;
+						if($3[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $3[i].Size;							
+						}
+					}
+
+					//asignamos el padre al cuerpo
+					for(var i =0; i < $3.length; i++){
+						$3[i].Padre = simbolo;
+						if($3[i].Rol == "declaracion"){
+							simbolo.Size++;
+						}else{
+							simbolo.Size = simbolo.Size + $3[i].Size;							
+						}
+					}
+					$$ = simbolo;
+				}
 			;
 
 ASIGNACION_SIMPLIFICADA 
@@ -608,33 +995,74 @@ EXP
 				$$ = new FNodoExpresion();
 				$$.IniciarNodo(null, null, "null", "null", @1.first_line, @1.first_column + 1, null);
 			}
+	| OBJETO Id 
+		{
+			var ob = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, null, null);
+			$1.InsertarHijo(ob);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, $1);
+			
+		}
+	| OBJETO Id L_DIMENSIONESA
+		{
+			var llamada = new LlamadaArreglo($2, @1.first_line, @1.first_column + 1, $3, null);
+			var ob = new Objeto("arreglo", $2, @1.first_line, @1.first_column + 1, llamada, null, null);
+			$1.InsertarHijo(ob);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, $1);
+		}
+	| Id
+		{
+			var ob = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, null, null);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, ob);
+		}
+	| Id L_DIMENSIONESA
+		{
+			var llamada = new LlamadaArreglo($1, @1.first_line, @1.first_column + 1, $2, null);
+			var ob = new Objeto("arreglo", $1, @1.first_line, @1.first_column + 1, llamada, null, null);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, ob);
+		}
+	| OBJETO Id '('L_EXPS ')'
+		{
+			var llamada = new LlamadaMetodo($2, @1.first_line, @1.first_column + 1, $4, null);
+			var ob = new Objeto("metodo", $2, @1.first_line, @1.first_column + 1, llamada, null, null);
+			$1.InsertarHijo(ob);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, $1);
+		}
+	| Id '('L_EXPS ')'
+		{
+			var llamada = new LlamadaMetodo($1, @1.first_line, @1.first_column + 1, $3, null);
+			var ob = new Objeto("metodo", $1, @1.first_line, @1.first_column + 1, llamada, null, null);
+			$$ = new FNodoExpresion();
+			$$.IniciarNodo(null, null, "obj", "obj", @1.first_line, @1.first_column + 1, ob);			
+		}
     ;
 
 	OBJETO
-		: Id HIJO
+		: OBJETO HIJO
 			{
-				$$ = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, $2, null);
+				$1.InsertarHijo($2);
+				$$ = $1;
 			}
-		| Id L_DIMENSIONESA 
-		| Id '('L_EXPS')' HIJO
+		| HIJO
 			{
-				var llamada = new LlamadaMetodo($1, @1.first_line, @1.first_column + 1, $3, null);
-				$$ = new Objeto("metodo", $1, @1.first_line, @1.first_column + 1, llamada, $5, null);
+				$$ = $1;
 			}
 		;
 
 	HIJO
-		: Id HIJO
+		: Id '.'
 			{
 				$$ = new Objeto("variable", $1, @1.first_line, @1.first_column + 1, null, $2, null);
-			}
-		| Id L_DIMENSIONESA 
-		| Id '(' L_EXPS ')' HIJO
+            }
+		| Id '('L_EXPS ')' '.'
 			{
 				var llamada = new LlamadaMetodo($1, @1.first_line, @1.first_column + 1, $3, null);
 				$$ = new Objeto("metodo", $1, @1.first_line, @1.first_column + 1, llamada, $5, null);
 			}
-		| {$$ = null;}
 		;
 
 	L_EXPS 

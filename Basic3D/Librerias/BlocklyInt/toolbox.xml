@@ -1,0 +1,12 @@
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <block type="principal"></block>
+  <block type="metodo">
+    <field name="nombre">nombre</field>
+  </block>
+  <block type="tipo">
+    <field name="tipo">void</field>
+  </block>
+  <block type="parametro">
+    <field name="nombre">nombre</field>
+  </block>
+</xml>

@@ -3,12 +3,19 @@ var ValorEtiqueta = 0;
 
 var TablaSimbolos = null;
 
+var Tabla3D = null;
+
 var ReporteSimbolos = null;
 
 var ReporteErrores = null;
 
+var Tiempo = 100;
+
+var Avanzar = true;
+
 function InicializarHerramientas() {
     ValorTemporal = 0;
+    ValorEtiqueta = 0;
     TablaSimbolos = null;
     ReporteSimbolos = document.getElementById("tablasimbolo");
     ReporteErrores = document.getElementById("tablaerrores");
@@ -47,11 +54,15 @@ function generarReporteSimbolos() {
         for (var i = 0; i < TablaSimbolos.length; i++){
             var sim = TablaSimbolos[i];
 
-            if (sim.Rol == "declaracion"){
+            if (sim.Rol == "declaracion" || sim.Rol == "declaracionarreglo"){
                 insertarReporteSimbolo(sim.Rol, sim.Tipo, "global", sim.Nombre, sim.Size, sim.Pos);
-            } else if (sim.Rol == "metodo" || sim.Rol == "principal") {
-                if (sim.Hijos.length > 0) {
+            } else if (sim.Rol == "metodo" || sim.Rol == "principal" || "element") {
+                
+                if (sim.Size > 0) {
                     insertarReporteSimbolo(sim.Rol, sim.Tipo, "global", sim.Nombre, sim.Size, sim.Pos);
+                    
+                    generarReporteSimbolos2(sim.Valor.Parametros, sim.Nombre);
+                    
                     generarReporteSimbolos2(sim.Hijos, sim.Nombre);
                 }
             }
@@ -120,11 +131,3 @@ function getEtq() {
     ValorEtiqueta++;
     return temp;
 }
-
-
-
-
-
-
-
-

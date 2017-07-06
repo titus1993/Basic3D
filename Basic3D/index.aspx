@@ -39,7 +39,7 @@
             <div class="templatemo_hexservices col-sm-6">
                 <div class="blok text-center">
                     <div class="hexagon-a">
-                        <a class="hlinktop" href="#">
+                        <a class="hlinktop" href="Intermedio.aspx">
                             <div class="hexa-a">
                                 <div class="hcontainer-a">
                                     <div class="vertical-align-a">
